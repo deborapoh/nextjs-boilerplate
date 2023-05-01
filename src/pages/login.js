@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Box, Typography, styled } from "@mui/material"
 import { useForm } from 'react-hook-form';
 import UserInput from "@/components/Input/UserInput"
@@ -16,6 +17,7 @@ const Container = styled(Box)(({ theme }) => ({
   height: 450,
   justifyContent: 'center',
   margin: 24,
+  marginTop: 100,
   padding: 32,
   width: 350,
 }));
@@ -46,7 +48,7 @@ const Login = () => {
     const { user, password} = data
     const { user: { adminUser, adminPassword } } = mockData
 
-    // implement login in the api with jwt validation
+    // TODO: implement login in the api with jwt validation
     if (user !== adminUser || password !== adminPassword) {
       setError("invalidCredentials")
       return
@@ -55,11 +57,17 @@ const Login = () => {
     window.open('/main-page', '_self')
   };
 
-  // to be implemented:
+  // TODO: implement:
   // better routing
   // send error messages to the component
+  // props validation
+  // use theme for colors and spacing
+  // isolate styles
   return (
     <>
+      <Head>
+        <title>Login</title>
+      </Head>
       <Container>
         <Logo>Invoice Management</Logo>
         <Form onSubmit={handleSubmit(onSubmit)}>
