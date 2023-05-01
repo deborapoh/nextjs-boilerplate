@@ -63,6 +63,7 @@ const Login = () => {
   // props validation
   // use theme for colors and spacing
   // isolate styles
+  // redirect index to login page
   return (
     <>
       <Head>

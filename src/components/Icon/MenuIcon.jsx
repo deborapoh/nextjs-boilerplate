@@ -1,7 +1,7 @@
-import { Menu as MenuIcon } from '@mui/icons-material'
+import { Menu } from '@mui/icons-material'
 import { styled } from "@mui/material"
 
-const Icon = styled(MenuIcon)(({ theme }) => ({
+const Icon = styled(Menu)(({ theme }) => ({
   backgroundColor: '#4f2783',
   borderRadius: 5,
   cursor: 'pointer',
@@ -13,8 +13,8 @@ const Icon = styled(MenuIcon)(({ theme }) => ({
   }
 }));
 
-const Menu = () => (
-  <Icon />
+const MenuIcon = ({ onClick }) => (
+  <Icon onClick={onClick} />
 )
 
-export default Menu
+export default MenuIcon

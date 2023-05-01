@@ -1,8 +1,10 @@
 import { Box, styled } from "@mui/material"
+import { useState } from 'react'
 import ActionButton from '@/components/Button/ActionButton'
-import Menu from "@/components/Icon/Menu"
+import MenuIcon from "@/components/Icon/MenuIcon"
 import Dashboard from "@/components/Dashboard"
 import SignOutButton from "@/components/Button/SignOutButton";
+import Popover from "@/components/Popover"
 
 const HeaderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
@@ -27,14 +29,26 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const MainPage = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
   const handleSignOut = () => {
     window.open('/login', '_self')
   }
 
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+  };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget)
+  };
+
   return (
     <Container>
       <HeaderContainer>
-        <Menu />
+        <MenuIcon onClick={handleMenuOpen} />
+        <Popover anchorEl={anchorEl} open={open} onClose={handleMenuClose} />
         <SignOutButton onClick={handleSignOut} text="Sign Out" />
       </HeaderContainer>
       <Dashboard />
