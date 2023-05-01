@@ -5,34 +5,42 @@ import MenuIcon from "@/components/Icon/MenuIcon"
 import Dashboard from "@/components/Dashboard"
 import SignOutButton from "@/components/Button/SignOutButton";
 import Popover from "@/components/Popover"
-import PreferencesDialog from "@/components/Dialog/PreferencesDialog"
-import CompanyDialog from "@/components/Dialog/CompanyDialog"
+import Dialog from "@/components/Dialog"
+import { dialogs, useSetDialogState } from "@/state/dialog"
+import Logo from "@/components/Icon/Logo"
 
 const HeaderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
-  backgroundColor: '#4f2783',
+  backgroundColor: '#dabeff',
   display: 'flex',
   padding: 10,
   justifyContent: 'space-between',
   width: '100%',
 }));
 
-const ButtonContainer = styled(Box)(({ theme }) => ({
+const FooterContainer = styled(Box)(({ theme }) => ({
+  alignItems: 'center',
   display: 'flex',
-  width: 700,
-  justifyContent: 'space-evenly',
+  padding: 10,
+  justifyContent: 'flex-end',
+  width: '100%',
 }));
 
 const Container = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
+  height: '100%',
   width: '100%',
+  justifyContent: 'space-between',
 }));
 
+// TODO: sort alphabetically and adjust eslint
+// TODO: isolate css
+
 const MainPage = () => {
-  const [openPreferences, setOpenPreferences] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null);
+  const setDialogState = useSetDialogState()
   const open = Boolean(anchorEl);
 
   const handleSignOut = () => {
@@ -45,7 +53,9 @@ const MainPage = () => {
 
   const handleOpenPreferences = () => {
     handleMenuClose()
-    setOpenPreferences(true)
+    setDialogState(dialogs.preferences)
+
+    // setOpenPreferences(true)
   }
 
   const handleMenuOpen = (event) => {
@@ -54,24 +64,29 @@ const MainPage = () => {
 
   return (
     <Container>
-    <PreferencesDialog open={openPreferences} onClose={() => setOpenPreferences(false)} />
-    <CompanyDialog open={openPreferences} onClose={() => setOpenPreferences(false)} />
+    <Dialog />
       <HeaderContainer>
-        <MenuIcon onClick={handleMenuOpen} />
-        <Popover
-          handleOpenPreferences={handleOpenPreferences}
-          handleMenuClose={handleMenuClose}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleMenuClose}
-        />
+        <Box alignItems='center' display='flex' width={300} justifyContent='space-between'>
+          <MenuIcon onClick={handleMenuOpen} />
+          <Popover
+            handleOpenPreferences={handleOpenPreferences}
+            handleMenuClose={handleMenuClose}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleMenuClose}
+          />
+          <Logo />
+        </Box>
         <SignOutButton onClick={handleSignOut} text="Sign Out" />
       </HeaderContainer>
       <Dashboard />
-      <ButtonContainer>
+      <FooterContainer>
         <ActionButton text="Generate Invoice" />
-        <ActionButton text="Generate Expense" />
-      </ButtonContainer>
+        <Box ml={1}>
+          <ActionButton text="Generate Expense" />
+        </Box>
+      </FooterContainer>
+
     </Container>
   )
 }

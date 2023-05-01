@@ -1,11 +1,12 @@
 import Head from 'next/head'
-import { Box, Typography, styled } from "@mui/material"
+import { Box, styled } from "@mui/material"
 import { useForm } from 'react-hook-form';
 import UserInput from "@/components/Input/UserInput"
 import PasswordInput from "@/components/Input/PasswordInput"
 import SubmitButton from "@/components/Button/SubmitButton";
 import InputValidation from "@/components/Warning/InputValidation";
 import mockData from "@/mock-data";
+import Logo from '@/components/Icon/Logo';
 
 const Container = styled(Box)(({ theme }) => ({
   alignItems: 'center',
@@ -28,12 +29,6 @@ const Form = styled('form')(({ theme }) => ({
   justifyContent: 'space-evenly',
   marginBlock: '64px 16px',
   width: 300,
-}));
-
-const Logo = styled(Typography)(({ theme }) => ({
-  color: '#4f2783',
-  fontWeight: 'bold',
-  fontSize: '24px',
 }));
 
 const Login = () => {
@@ -70,7 +65,7 @@ const Login = () => {
         <title>Login</title>
       </Head>
       <Container>
-        <Logo>Invoice Management</Logo>
+        <Logo />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <UserInput errors={errors} register={register} />
           <PasswordInput errors={errors} register={register} />

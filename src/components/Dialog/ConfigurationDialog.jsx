@@ -1,11 +1,9 @@
 import { Dialog, DialogContent, DialogTitle, IconButton, styled } from "@mui/material"
 import SubmitButton from "../Button/SubmitButton"
 import { useForm } from 'react-hook-form';
-import CnpjInput from "../Input/CnpjInput";
-import CompanyNameInput from "../Input/CompanyNameInput";
-import TradingNameInput from "../Input/TradingNameInput";
-import { useEffect } from "react"
 import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog";
+import BillingLimitInput from "../Input/BillingLimitInput";
+import ControlledCheckbox from "../Input/Checkbox";
 import { ArrowBack } from '@mui/icons-material'
 
 const ContentContainer = styled(DialogContent)(({ theme }) => ({
@@ -13,17 +11,8 @@ const ContentContainer = styled(DialogContent)(({ theme }) => ({
   flexDirection: 'column',
   height: 400,
   width: 500,
-  justifyContent: 'space-around',
 }));
 
-const Form = styled('form')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-evenly',
-  width: '100%',
-}));
-
-// TODO: isolate this css
 const BackButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
   right: 8,
@@ -31,8 +20,16 @@ const BackButton = styled(IconButton)(({ theme }) => ({
   color: (theme) => theme.palette.grey[500],
 }));
 
-const CompanyDialog = () => {
-  const open = useIsDialogOpen(dialogs.company);
+const Form = styled('form')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  height: '100%',
+  width: '100%',
+}));
+
+const ConfigurationDialog = () => {
+  const open = useIsDialogOpen(dialogs.configurations);
   const setDialogState = useSetDialogState()
 
   const { formState: { errors }, handleSubmit, register, clearErrors, watch, setValue } = useForm({
@@ -40,29 +37,10 @@ const CompanyDialog = () => {
     reValidateMode: 'onChange'
   });
 
-  const cnpjValue = watch("cnpj")
-
-  const normalizeCnpjNumber = (value) => {
-    if (!value) return ''
-
-    return value.replace(/[\D]/g, '')
-      .replace(/(\d{2})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1/$2')
-      .replace(/(\d{4})(\d)/, '$1-$2')
-      .replace(/(-\d{2})\d+?$/, '$1')
-  }
-
-  useEffect(() => {
-    setValue("cnpj", normalizeCnpjNumber(cnpjValue))
-  },[cnpjValue])
-
   const onSubmit = async (data, e) => {
     e.preventDefault()
     console.log('data', data)
   };
-
-  // TODO: add a close icon button to all dialogs
 
   return (
     <Dialog
@@ -70,7 +48,7 @@ const CompanyDialog = () => {
       onClose={() => setDialogState('')}
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        Register a new company
+        Configurations
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
@@ -80,14 +58,14 @@ const CompanyDialog = () => {
       </DialogTitle>
       <ContentContainer dividers>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <CnpjInput errors={errors} register={register} />
-        <CompanyNameInput errors={errors} register={register} />
-        <TradingNameInput errors={errors} register={register} />
-        <SubmitButton name="Register" onClick={() => clearErrors("")} />
+        <BillingLimitInput errors={errors} register={register} />
+        <ControlledCheckbox label='Habilitar alerta de faturamento por email' />
+        <ControlledCheckbox label='Habilitar alerta de faturamento por sms' />
+        <SubmitButton name="Save" onClick={() => clearErrors("")} />
       </Form>
       </ContentContainer>
     </Dialog>
   )
 }
 
-export default CompanyDialog
+export default ConfigurationDialog

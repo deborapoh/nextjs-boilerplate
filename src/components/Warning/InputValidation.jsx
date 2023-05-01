@@ -1,5 +1,7 @@
 import { Box, Typography, styled } from '@mui/material';
 
+// TODO: improve this component
+
 const Text = styled(Typography)(({ theme }) => ({
   color: '#4f2783',
   fontSize: 12,

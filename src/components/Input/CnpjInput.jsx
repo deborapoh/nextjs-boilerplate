@@ -3,11 +3,13 @@ import Input from '@/components/Input'
 
 // TODO: add validation for CNPJ
 
-const CnpjInput = ({ errors, register }) => (
-  <>
-    <Input name="CNPJ" register={register} type="number" />
-    <InputValidation message={errors.cnpj?.type === 'required' && "CNPJ is required"} />
-  </>
-)
+const CnpjInput = ({ errors, register }) => {
+  return (
+    <>
+      <Input name="CNPJ" register={register} />
+      <InputValidation message={errors.cnpj?.type === 'required' && "CNPJ is required"} />
+    </>
+  )
+}
 
 export default CnpjInput;
