@@ -3,7 +3,7 @@ import { Box, Typography, styled } from "@mui/material"
 import { useForm } from 'react-hook-form';
 import UserInput from "@/components/Input/UserInput"
 import PasswordInput from "@/components/Input/PasswordInput"
-import LoginButton from "@/components/Button/LoginButton";
+import SubmitButton from "@/components/Button/SubmitButton";
 import InputValidation from "@/components/Warning/InputValidation";
 import mockData from "@/mock-data";
 
@@ -74,7 +74,7 @@ const Login = () => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <UserInput errors={errors} register={register} />
           <PasswordInput errors={errors} register={register} />
-          <LoginButton onClick={() => clearErrors("")} />
+          <SubmitButton name="Sign in" onClick={() => clearErrors("")} />
           <InputValidation message={errors.invalidCredentials && "Invalid Credentials"} />
         </Form>
       </Container>

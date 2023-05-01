@@ -8,8 +8,8 @@ const ButtonStyled = styled(Button)(({ theme }) => ({
   }
 }));
 
-const LoginButton = ({ onClick }) => (
-  <ButtonStyled onClick={onClick} type="submit" variant="contained">Sign in</ButtonStyled>
+const SubmitButton = ({ name, onClick = () => {} }) => (
+  <ButtonStyled onClick={onClick} type="submit" variant="contained">{name}</ButtonStyled>
 );
 
-export default LoginButton;
+export default SubmitButton;

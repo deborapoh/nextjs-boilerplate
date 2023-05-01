@@ -5,6 +5,8 @@ import MenuIcon from "@/components/Icon/MenuIcon"
 import Dashboard from "@/components/Dashboard"
 import SignOutButton from "@/components/Button/SignOutButton";
 import Popover from "@/components/Popover"
+import PreferencesDialog from "@/components/Dialog/PreferencesDialog"
+import CompanyDialog from "@/components/Dialog/CompanyDialog"
 
 const HeaderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
@@ -29,6 +31,7 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const MainPage = () => {
+  const [openPreferences, setOpenPreferences] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -40,15 +43,28 @@ const MainPage = () => {
     setAnchorEl(null)
   };
 
+  const handleOpenPreferences = () => {
+    handleMenuClose()
+    setOpenPreferences(true)
+  }
+
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   };
 
   return (
     <Container>
+    <PreferencesDialog open={openPreferences} onClose={() => setOpenPreferences(false)} />
+    <CompanyDialog open={openPreferences} onClose={() => setOpenPreferences(false)} />
       <HeaderContainer>
         <MenuIcon onClick={handleMenuOpen} />
-        <Popover anchorEl={anchorEl} open={open} onClose={handleMenuClose} />
+        <Popover
+          handleOpenPreferences={handleOpenPreferences}
+          handleMenuClose={handleMenuClose}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleMenuClose}
+        />
         <SignOutButton onClick={handleSignOut} text="Sign Out" />
       </HeaderContainer>
       <Dashboard />

@@ -1,7 +1,7 @@
 import MenuOptions from "./MenuOptions"
 import { Popover as PopoverMui } from '@mui/material'
 
-const Popover = ({ anchorEl, open, onClose }) => {
+const Popover = ({ anchorEl, open, onClose, handleOpenPreferences }) => {
   return (
     <PopoverMui
       anchorEl={anchorEl}
@@ -16,7 +16,7 @@ const Popover = ({ anchorEl, open, onClose }) => {
         horizontal: 'left',
       }}
     >
-      <MenuOptions />
+      <MenuOptions handleOpenPreferences={handleOpenPreferences} />
     </PopoverMui>
   )
 }
