@@ -25,13 +25,13 @@ const MenuOptions = ({ handleOpenPreferences }) => {
         <List>
           <ListItem disablePadding>
             <ListItemButton onClick={handleOpenPreferences}>
-              <ListItemText primary="Preferences" />
+              <ListItemText primary="Preferências" />
             </ListItemButton>
           </ListItem>
           <Divider />
           <ListItem disablePadding>
             <ListItemButton onClick={handleClickHistory}>
-              <ListItemText primary="History" />
+              <ListItemText primary="Histórico de Lançamentos" />
             </ListItemButton>
           </ListItem>
         </List>

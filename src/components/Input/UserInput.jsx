@@ -3,8 +3,8 @@ import Input from '@/components/Input'
 
 const UserInput = ({ errors, register }) => (
   <>
-    <Input name="User" register={register} />
-    <InputValidation message={errors.user?.type === 'required' && "Users is required"} />
+    <Input name="Usuário" register={register} />
+    <InputValidation message={errors.usuario?.type === 'required' && "Usuário é obrigatório"} />
   </>
 )
 

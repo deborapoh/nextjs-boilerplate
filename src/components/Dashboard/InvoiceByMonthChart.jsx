@@ -17,7 +17,7 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const InvoiceByMonthChart = () => (
-  <Container>Invoice By Month Chart</Container>
+  <Container>Nota Fiscal</Container>
 )
 
 export default InvoiceByMonthChart

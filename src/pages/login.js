@@ -52,13 +52,12 @@ const Login = () => {
     window.open('/main-page', '_self')
   };
 
-  // TODO: implement:
-  // better routing
-  // send error messages to the component
-  // props validation
-  // use theme for colors and spacing
-  // isolate styles
-  // redirect index to login page
+  // TODO: better routing
+  // TODO: send error messages to the component
+  // TODO: props validation
+  // TODO: use theme for colors and spacing
+  // TODO: isolate styles
+  // TODO: redirect index to login page
   return (
     <>
       <Head>
@@ -69,8 +68,8 @@ const Login = () => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <UserInput errors={errors} register={register} />
           <PasswordInput errors={errors} register={register} />
-          <SubmitButton name="Sign in" onClick={() => clearErrors("")} />
-          <InputValidation message={errors.invalidCredentials && "Invalid Credentials"} />
+          <SubmitButton name="Entrar" onClick={() => clearErrors("")} />
+          <InputValidation message={errors.invalidCredentials && "Credenciais Inválidas"} />
         </Form>
       </Container>
     </>

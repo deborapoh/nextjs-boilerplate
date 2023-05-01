@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Box, styled } from "@mui/material"
 import { useState } from 'react'
 import ActionButton from '@/components/Button/ActionButton'
@@ -63,31 +64,35 @@ const MainPage = () => {
   };
 
   return (
-    <Container>
-    <Dialog />
-      <HeaderContainer>
-        <Box alignItems='center' display='flex' width={300} justifyContent='space-between'>
-          <MenuIcon onClick={handleMenuOpen} />
-          <Popover
-            handleOpenPreferences={handleOpenPreferences}
-            handleMenuClose={handleMenuClose}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleMenuClose}
-          />
-          <Logo />
-        </Box>
-        <SignOutButton onClick={handleSignOut} text="Sign Out" />
-      </HeaderContainer>
-      <Dashboard />
-      <FooterContainer>
-        <ActionButton text="Generate Invoice" />
-        <Box ml={1}>
-          <ActionButton text="Generate Expense" />
-        </Box>
-      </FooterContainer>
-
-    </Container>
+    <>
+      <Head>
+        <title>Página Inicial</title>
+      </Head>
+      <Dialog />
+      <Container>
+        <HeaderContainer>
+          <Box alignItems='center' display='flex' width={300} justifyContent='space-between'>
+            <MenuIcon onClick={handleMenuOpen} />
+            <Popover
+              handleOpenPreferences={handleOpenPreferences}
+              handleMenuClose={handleMenuClose}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleMenuClose}
+            />
+            <Logo />
+          </Box>
+          <SignOutButton onClick={handleSignOut} text="Sair" />
+        </HeaderContainer>
+        <Dashboard />
+        <FooterContainer>
+          <ActionButton text="Lançar NF" />
+          <Box ml={1}>
+            <ActionButton text="Lançar Despesa" />
+          </Box>
+        </FooterContainer>
+      </Container>
+    </>
   )
 }
 

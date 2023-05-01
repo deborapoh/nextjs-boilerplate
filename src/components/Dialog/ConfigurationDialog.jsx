@@ -48,7 +48,7 @@ const ConfigurationDialog = () => {
       onClose={() => setDialogState('')}
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        Configurations
+        Configurações
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
@@ -61,7 +61,7 @@ const ConfigurationDialog = () => {
         <BillingLimitInput errors={errors} register={register} />
         <ControlledCheckbox label='Habilitar alerta de faturamento por email' />
         <ControlledCheckbox label='Habilitar alerta de faturamento por sms' />
-        <SubmitButton name="Save" onClick={() => clearErrors("")} />
+        <SubmitButton name="Salvar" onClick={() => clearErrors("")} />
       </Form>
       </ContentContainer>
     </Dialog>

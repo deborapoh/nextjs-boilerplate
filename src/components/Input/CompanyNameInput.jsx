@@ -3,8 +3,8 @@ import Input from '@/components/Input'
 
 const CompanyNameInput = ({ errors, register }) => (
   <>
-    <Input name="Company Name" register={register} />
-    <InputValidation message={errors.companyname?.type === 'required' && "Company name is required"} />
+    <Input name="Razão Social" register={register} />
+    <InputValidation message={errors.razaosocial?.type === 'required' && "Razão Social é obrigatório"} />
   </>
 )
 

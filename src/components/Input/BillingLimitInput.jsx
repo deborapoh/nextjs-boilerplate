@@ -8,13 +8,15 @@ const Container = styled(Box)(({ theme }) => ({
   width: '100%',
 }));
 
-// TODO: change language to pt
-// TODO: change main page color to a lighter purple
-
 const BillingLimitInput = ({ errors, register }) => (
   <Container>
-    <Input type='number' name="Billing Limit" register={register} />
-    <InputValidation message={errors.billinglimit?.type === 'required' && "Invalid Billing limit"} />
+    <Input
+      placeholder='Limite máximo de Faturamento de MEI em R$'
+      type='number'
+      name="Limite de Faturamento"
+      register={register}
+    />
+    <InputValidation message={errors.limitedefaturamento?.type === 'required' && "Limite de faturamento inválido"} />
   </Container>
 )
 

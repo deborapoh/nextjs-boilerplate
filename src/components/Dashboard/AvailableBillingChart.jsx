@@ -17,7 +17,7 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const AvailableBillingChart = () => (
-  <Container>Available Billing Chart</Container>
+  <Container>Faturamento Disponível</Container>
 )
 
 export default AvailableBillingChart

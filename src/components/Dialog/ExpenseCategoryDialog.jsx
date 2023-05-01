@@ -47,7 +47,7 @@ const ExpenseCategoryDialog = () => {
       onClose={() => setDialogState('')}
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        Expense Categories
+        Categorias de Despesas
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
@@ -58,7 +58,7 @@ const ExpenseCategoryDialog = () => {
       <ContentContainer dividers>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <CategoryNameInput errors={errors} register={register} />
-        <SubmitButton name="Create" onClick={() => clearErrors("")} />
+        <SubmitButton name="Cadastrar" onClick={() => clearErrors("")} />
       </Form>
       </ContentContainer>
     </Dialog>

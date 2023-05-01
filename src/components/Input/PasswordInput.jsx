@@ -3,8 +3,8 @@ import Input from '@/components/Input'
 
 const PasswordInput = ({ errors, register }) => (
   <>
-    <Input name="Password" register={register} type="password" />
-    <InputValidation message={errors.password?.type === 'required' && "Password is required"} />
+    <Input name="Senha" register={register} type="password" />
+    <InputValidation message={errors.senha?.type === 'required' && "Senha é obrigatório"} />
   </>
 );
 

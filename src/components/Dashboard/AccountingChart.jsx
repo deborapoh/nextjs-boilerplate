@@ -17,7 +17,7 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const AccountingChart = () => (
-  <Container>Accounting Chart</Container>
+  <Container>Balanço Simples</Container>
 )
 
 export default AccountingChart

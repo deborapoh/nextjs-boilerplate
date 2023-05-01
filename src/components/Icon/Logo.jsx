@@ -6,6 +6,6 @@ const Text = styled(Typography)(({ theme }) => ({
   fontSize: '24px',
 }));
 
-const Logo = () => <Text>Invoice Management</Text>
+const Logo = () => <Text>Gerenciamento de NF</Text>
 
 export default Logo

@@ -28,7 +28,7 @@ const PreferencesDialog = () => {
       onClose={() => setDialogState('')}
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        Preferences
+        Preferências
         <CloseButton
           aria-label="close"
           onClick={() => setDialogState('')}
@@ -37,9 +37,9 @@ const PreferencesDialog = () => {
         </CloseButton>
       </DialogTitle>
       <ContentContainer dividers>
-        <ActionButton onClick={() => setDialogState(dialogs.company)} text="Companies" />
-        <ActionButton onClick={() => setDialogState(dialogs.expenseCategory)} text="Expense Categories" />
-        <ActionButton onClick={() => setDialogState(dialogs.configurations)} text="Configurations" />
+        <ActionButton onClick={() => setDialogState(dialogs.company)} text="Empresas Parceiras" />
+        <ActionButton onClick={() => setDialogState(dialogs.expenseCategory)} text="Categorias de Despesa" />
+        <ActionButton onClick={() => setDialogState(dialogs.configurations)} text="Configurações" />
       </ContentContainer>
     </Dialog>
   )

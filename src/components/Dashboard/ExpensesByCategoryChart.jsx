@@ -17,7 +17,7 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const ExpensesByCategoryChart = () => (
-  <Container>Expenses By Category Chart</Container>
+  <Container>Despesas por Categoria</Container>
 )
 
 export default ExpensesByCategoryChart

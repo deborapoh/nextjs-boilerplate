@@ -70,7 +70,7 @@ const CompanyDialog = () => {
       onClose={() => setDialogState('')}
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        Register a new company
+        Cadastro de Empresas
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
@@ -83,7 +83,7 @@ const CompanyDialog = () => {
         <CnpjInput errors={errors} register={register} />
         <CompanyNameInput errors={errors} register={register} />
         <TradingNameInput errors={errors} register={register} />
-        <SubmitButton name="Register" onClick={() => clearErrors("")} />
+        <SubmitButton name="Cadastrar" onClick={() => clearErrors("")} />
       </Form>
       </ContentContainer>
     </Dialog>
