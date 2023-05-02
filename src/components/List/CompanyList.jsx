@@ -57,9 +57,6 @@ const CompanyList = () => {
     setDialogState(dialogs.companyEdit)
   }
 
-  // TODO: isolate icon button
-  // TODO: make responsive
-
   return (
     <Container>
       <ListTitle>Empresas Cadastradas</ListTitle>

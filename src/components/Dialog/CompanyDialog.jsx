@@ -70,6 +70,8 @@ const CompanyDialog = () => {
 
     const { cnpj, companyName, tradingName } = data
 
+    console.log('data', data)
+
     const newCompany = {
       id: v4(),
       cnpj,
@@ -86,9 +88,6 @@ const CompanyDialog = () => {
 
     setCompanyState([...registeredCompanies, newCompany])
   }
-
-  // TODO: add a close icon button to all dialogs
-  // TODO: add proptypes to all props
 
   useEffect(() => {
     if (!isSubmitSuccessful) {

@@ -9,6 +9,7 @@ import CompanyNameInput from "../Input/CompanyNameInput"
 import TradingNameInput from "../Input/TradingNameInput"
 import { dialogs, useEditCompanyState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useSetCompanyState, useCompanyState } from "@/state/companies"
+import BackButton from "../Button/BackButton"
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
@@ -101,9 +102,6 @@ const CompanyEditDialog = () => {
       setDialogState(dialogs.company)
     }
   }
-
-  // TODO: add a close icon button to all dialogs
-  // TODO: add proptypes to all props
 
   useEffect(() => {
     if (!defaultValues.cnpj) {

@@ -7,6 +7,7 @@ import SubmitButton from "../Button/SubmitButton"
 import { dialogs, useEditExpenseCategoryState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 import CategoryNameInput from "../Input/CategoryNameInput"
+import BackButton from "../Button/BackButton"
 
 const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',

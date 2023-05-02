@@ -101,7 +101,7 @@ body {
   height: 100vh;
   width: inherit;
   align-items: center;
-  background: #ececec;
+  background: #fff;
   color: rgb(var(--foreground-rgb));
   display: flex;
   justify-content: center;

@@ -74,7 +74,7 @@ const InvoiceList = () => {
               </ListItemButton>
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItemText primary={`Empresa: ${company.tradingName || ''}`} />
+                  {/* <ListItemText primary={`Empresa: ${company.tradingName || ''}`} /> */}
                   <ListItemText primary={`Valor R$: ${invoice.invoiceAmount || ''}`} />
                   <ListItemText primary={`Descrição do Serviço: ${invoice.serviceDescription || ''}`} />
                   <ListItemText primary={`Mês de competência: ${invoice.month || ''}`} />

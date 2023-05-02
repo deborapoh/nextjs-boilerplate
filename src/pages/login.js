@@ -46,7 +46,6 @@ const Login = () => {
     const { user, password} = data
     const { adminUser, adminPassword } = registeredUser
 
-    // TODO: implement login in the api with jwt validation
     if (user !== adminUser || password !== adminPassword) {
       setError("invalidCredentials")
       return
@@ -55,9 +54,6 @@ const Login = () => {
     window.open('/main-page', '_self')
   }
 
-  // TODO: send error messages to the component
-  // TODO: props validation
-  // TODO: isolate styles
   return (
     <>
       <Head>

@@ -40,7 +40,6 @@ const Container = styled(Box)(() => ({
   justifyContent: 'space-between',
 }))
 
-// TODO: sort alphabetically and adjust eslint
 // TODO: isolate css
 
 const MainPage = () => {
