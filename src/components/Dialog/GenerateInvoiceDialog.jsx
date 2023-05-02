@@ -1,9 +1,10 @@
 import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
-import SubmitButton from "../Button/SubmitButton"
 import { useForm } from 'react-hook-form'
 import { useEffect } from "react"
-import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { Close as CloseIcon } from '@mui/icons-material'
+
+import SubmitButton from "../Button/SubmitButton"
+import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { v4 } from 'uuid'
 import { useInvoiceState, useSetInvoiceState } from "@/state/invoices"
 import InvoiceList from "../List/InvoiceList"
@@ -11,8 +12,6 @@ import InvoiceAmountInput from "../Input/InvoiceAmountInput"
 import ServiceDescriptionInput from "../Input/ServiceDescriptionInput"
 import InvoiceMonthInput from "../Input/InvoiceMonthInput"
 import InvoiceDateInput from "../Input/InvoiceDateInput"
-import CompanyNameInput from "../Input/CompanyNameInput"
-import CompanySelect from "../Input/CompanySelect"
 
 const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',
@@ -112,7 +111,7 @@ const GenerateInvoiceDialog = () => {
       <DialogContent dividers>
         <InvoiceList />
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <CompanySelect register={register} />
+          {/* <CompanySelect /> */}
           <InvoiceAmountInput errors={errors} register={register} />
           <ServiceDescriptionInput errors={errors} register={register} />
           <InvoiceMonthInput errors={errors} register={register} />

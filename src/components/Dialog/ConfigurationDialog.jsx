@@ -1,23 +1,17 @@
-import { Dialog, DialogContent, DialogTitle, IconButton, styled } from "@mui/material"
-import SubmitButton from "../Button/SubmitButton"
+import { Dialog, DialogContent, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
+
+import SubmitButton from "../Button/SubmitButton"
 import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import BillingLimitInput from "../Input/BillingLimitInput"
 import ControlledCheckbox from "../Input/Checkbox"
-import { ArrowBack } from '@mui/icons-material'
+import BackButton from "../Button/BackButton"
 
 const ContentContainer = styled(DialogContent)(() => ({
   display: 'flex',
   flexDirection: 'column',
   height: 400,
   width: 500,
-}))
-
-const BackButton = styled(IconButton)(() => ({
-  position: 'absolute',
-  right: 8,
-  top: 8,
-  color: (theme) => theme.palette.grey[500],
 }))
 
 const Form = styled('form')(() => ({
@@ -51,9 +45,7 @@ const ConfigurationDialog = () => {
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
-        >
-          <ArrowBack />
-        </BackButton>
+        />
       </DialogTitle>
       <ContentContainer dividers>
       <Form onSubmit={handleSubmit(onSubmit)}>

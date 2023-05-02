@@ -7,8 +7,7 @@ import {
   ListItemText,
   styled
 } from '@mui/material'
-import { useState } from 'react'
-import PreferencesDialog from './Dialog/PreferencesDialog'
+
 
 const Container = styled(Box)(() => ({
   width: 200,

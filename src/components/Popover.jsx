@@ -1,5 +1,6 @@
-import MenuOptions from "./MenuOptions"
 import { Popover as PopoverMui } from '@mui/material'
+
+import MenuOptions from "./MenuOptions"
 
 const Popover = ({ anchorEl, open, onClose, handleOpenPreferences }) => {
   return (

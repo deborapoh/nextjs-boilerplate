@@ -1,18 +1,14 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
-import SubmitButton from "../Button/SubmitButton"
+import { Dialog, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
+import { useEffect, useMemo } from "react"
+import _ from 'lodash'
+
+import SubmitButton from "../Button/SubmitButton"
 import CnpjInput from "../Input/CnpjInput"
 import CompanyNameInput from "../Input/CompanyNameInput"
 import TradingNameInput from "../Input/TradingNameInput"
-import { useEffect, useMemo } from "react"
 import { dialogs, useEditCompanyState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useSetCompanyState, useCompanyState } from "@/state/companies"
-import { ArrowBack } from '@mui/icons-material'
-import _ from 'lodash'
-
-const Dialog = styled(DialogMui)(() => ({
-  // display: 'flex',
-}))
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
@@ -24,14 +20,6 @@ const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-}))
-
-// TODO: isolate this css
-const BackButton = styled(IconButton)(() => ({
-  position: 'absolute',
-  right: 8,
-  top: 8,
-  color: (theme) => theme.palette.grey[500],
 }))
 
 const CompanyEditDialog = () => {
@@ -139,9 +127,7 @@ const CompanyEditDialog = () => {
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.company)}
-        >
-          <ArrowBack />
-        </BackButton>
+        />
       </DialogTitle>
       <DialogContent dividers>
         <Form onSubmit={handleSubmit(onSubmit)}>

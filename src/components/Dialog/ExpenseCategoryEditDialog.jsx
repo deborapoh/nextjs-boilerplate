@@ -1,10 +1,10 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
-import SubmitButton from "../Button/SubmitButton"
+import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
 import { useEffect, useMemo } from "react"
-import { dialogs, useEditExpenseCategoryState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
-import { ArrowBack } from '@mui/icons-material'
 import _ from 'lodash'
+
+import SubmitButton from "../Button/SubmitButton"
+import { dialogs, useEditExpenseCategoryState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 import CategoryNameInput from "../Input/CategoryNameInput"
 
@@ -22,14 +22,6 @@ const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-}))
-
-// TODO: isolate this css
-const BackButton = styled(IconButton)(() => ({
-  position: 'absolute',
-  right: 8,
-  top: 8,
-  color: (theme) => theme.palette.grey[500],
 }))
 
 const ExpenseCategoryEditDialog = () => {
@@ -113,9 +105,7 @@ const ExpenseCategoryEditDialog = () => {
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.expenseCategory)}
-        >
-          <ArrowBack />
-        </BackButton>
+        />
       </DialogTitle>
       <DialogContent dividers>
         <Form onSubmit={handleSubmit(onSubmit)}>

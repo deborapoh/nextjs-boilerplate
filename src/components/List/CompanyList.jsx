@@ -8,9 +8,10 @@ import {
   styled,
 } from "@mui/material"
 import { Edit, ExpandLess, ExpandMore } from '@mui/icons-material'
+import { useState } from "react"
+
 import { useCompanyState } from "@/state/companies"
 import ListTitle from "../Title"
-import { useState } from "react"
 import { dialogs, useSetDialogState, useSetEditCompanyState } from "@/state/dialog"
 
 const List = styled(ListMui)(() => ({

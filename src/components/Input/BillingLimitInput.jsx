@@ -1,6 +1,7 @@
+import { Box, styled } from '@mui/material'
+
 import InputValidation from '@/components/Warning/InputValidation'
 import Input from '@/components/Input'
-import { Box, styled } from '@mui/material'
 
 const Container = styled(Box)(() => ({
   display: 'flex',

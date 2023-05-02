@@ -7,10 +7,11 @@ import {
   styled,
 } from "@mui/material"
 import { Edit, Archive } from '@mui/icons-material'
+import classNames from "classnames"
+
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 import ListTitle from "../Title"
 import { dialogs, useSetDialogState, useSetEditExpenseCategoryState } from "@/state/dialog"
-import classNames from "classnames"
 
 // TODO: Add tooltips to icons
 // TODO: Clear forms after submitting

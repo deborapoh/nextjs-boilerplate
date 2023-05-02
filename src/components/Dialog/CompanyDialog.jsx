@@ -1,19 +1,16 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled, Typography } from "@mui/material"
-import SubmitButton from "../Button/SubmitButton"
+import { Dialog, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
+import { useEffect } from "react"
+import { v4 } from 'uuid'
+
+import SubmitButton from "../Button/SubmitButton"
 import CnpjInput from "../Input/CnpjInput"
 import CompanyNameInput from "../Input/CompanyNameInput"
 import TradingNameInput from "../Input/TradingNameInput"
-import { useEffect } from "react"
 import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useSetCompanyState, useCompanyState } from "@/state/companies"
-import { ArrowBack, Delete, Edit } from '@mui/icons-material'
-import { v4 } from 'uuid'
 import CompanyList from "../List/CompanyList"
-
-const Dialog = styled(DialogMui)(() => ({
-  // display: 'flex',
-}))
+import BackButton from "../Button/BackButton"
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
@@ -24,14 +21,6 @@ const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '50%',
-}))
-
-// TODO: isolate this css
-const BackButton = styled(IconButton)(() => ({
-  position: 'absolute',
-  right: 8,
-  top: 8,
-  color: (theme) => theme.palette.grey[500],
 }))
 
 const CompanyDialog = () => {
@@ -121,9 +110,7 @@ const CompanyDialog = () => {
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
-        >
-          <ArrowBack />
-        </BackButton>
+        />
       </DialogTitle>
       <DialogContent dividers>
         <CompanyList />

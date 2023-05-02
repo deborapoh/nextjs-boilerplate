@@ -1,13 +1,14 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
-import SubmitButton from "../Button/SubmitButton"
+import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
 import { useEffect } from "react"
-import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
-import { ArrowBack } from '@mui/icons-material'
 import { v4 } from 'uuid'
+
+import SubmitButton from "../Button/SubmitButton"
+import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import ExpenseCategoryList from "../List/ExpenseCategoryList"
 import CategoryNameInput from "../Input/CategoryNameInput"
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
+import BackButton from "../Button/BackButton"
 
 const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',
@@ -22,14 +23,6 @@ const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '50%',
-}))
-
-// TODO: isolate this css
-const BackButton = styled(IconButton)(() => ({
-  position: 'absolute',
-  right: 8,
-  top: 8,
-  color: (theme) => theme.palette.grey[500],
 }))
 
 const ExpenseCategoryDialog = () => {
@@ -96,9 +89,7 @@ const ExpenseCategoryDialog = () => {
         <BackButton
           aria-label="back"
           onClick={() => setDialogState(dialogs.preferences)}
-        >
-          <ArrowBack />
-        </BackButton>
+        />
       </DialogTitle>
       <DialogContent dividers>
         <ExpenseCategoryList />

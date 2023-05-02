@@ -1,4 +1,4 @@
-const { Typography, styled } = require("@mui/material")
+import { Typography, styled } from "@mui/material"
 
 const Text = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,

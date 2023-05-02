@@ -8,12 +8,12 @@ import {
   styled,
 } from "@mui/material"
 import { Edit, ExpandLess, ExpandMore } from '@mui/icons-material'
+import { useState } from "react"
+
 import { useCompanyState } from "@/state/companies"
 import ListTitle from "../Title"
-import { useState } from "react"
 import { dialogs, useSetDialogState, useSetEditCompanyState } from "@/state/dialog"
 import { useInvoiceState } from "@/state/invoices"
-import { registeredCompanies } from "@/pages/main-page"
 
 const List = styled(ListMui)(() => ({
   overflowY: 'scroll',

@@ -1,15 +1,13 @@
-import { Button, styled } from "@mui/material"
+import { Button as ButtonMui, styled } from "@mui/material"
 
-const ButtonStyled = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+import Button from "@/components/Button"
+
+const ButtonStyled = styled(ButtonMui)(() => ({
   height: 56,
-  '&:hover': {
-    backgroundColor: theme.palette.secondary.main,
-  }
 }))
 
 const SubmitButton = ({ name, onClick = () => {} }) => (
-  <ButtonStyled onClick={onClick} type="submit" variant="contained">{name}</ButtonStyled>
+  <ButtonStyled as={Button} onClick={onClick} type="submit" variant="contained">{name}</ButtonStyled>
 )
 
 export default SubmitButton
