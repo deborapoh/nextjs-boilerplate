@@ -1,12 +1,12 @@
-import InputValidation from '@/components/Warning/InputValidation';
+import InputValidation from '@/components/Warning/InputValidation'
 import Input from '@/components/Input'
-import { Box, styled } from '@mui/material';
+import { Box, styled } from '@mui/material'
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-}));
+}))
 
 const CategoryNameInput = ({ errors, register }) => (
   <Container>
@@ -20,4 +20,4 @@ const CategoryNameInput = ({ errors, register }) => (
   </Container>
 )
 
-export default CategoryNameInput;
+export default CategoryNameInput

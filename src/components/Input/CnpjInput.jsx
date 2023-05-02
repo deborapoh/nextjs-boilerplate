@@ -1,4 +1,4 @@
-import InputValidation from '@/components/Warning/InputValidation';
+import InputValidation from '@/components/Warning/InputValidation'
 import Input from '@/components/Input'
 
 const CnpjInput = ({ errors, register, ...props }) => {
@@ -16,4 +16,4 @@ const CnpjInput = ({ errors, register, ...props }) => {
   )
 }
 
-export default CnpjInput;
+export default CnpjInput

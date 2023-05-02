@@ -8,24 +8,24 @@ import _ from 'lodash'
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 import CategoryNameInput from "../Input/CategoryNameInput"
 
-const Dialog = styled(DialogMui)(({ theme }) => ({
+const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',
 }))
 
-const DialogContent = styled(DialogContentMui)(({ theme }) => ({
+const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
   justifyContent: 'space-between',
   width: 500,
 }))
 
-const Form = styled('form')(({ theme }) => ({
+const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
 }))
 
 // TODO: isolate this css
-const BackButton = styled(IconButton)(({ theme }) => ({
+const BackButton = styled(IconButton)(() => ({
   position: 'absolute',
   right: 8,
   top: 8,
@@ -45,7 +45,7 @@ const ExpenseCategoryEditDialog = () => {
       categoryName: editExpenseCategoryState?.categoryName || '',
     }),
     [editExpenseCategoryState],
-  );
+  )
 
   const {
     formState: { errors },
@@ -64,7 +64,7 @@ const ExpenseCategoryEditDialog = () => {
     const { archived, categoryName } = data
 
     const registeredCategoryIndex = registeredCategories.findIndex(category => {
-      return category.id === editExpenseCategoryState.id;
+      return category.id === editExpenseCategoryState.id
     })
 
     if (registeredCategoryIndex !== -1) {
@@ -86,8 +86,6 @@ const ExpenseCategoryEditDialog = () => {
         categoryName,
       }
 
-      console.log('newArray', newArray)
-
       setExpenseCategoryState(newArray)
       setDialogState(dialogs.expenseCategory)
     }
@@ -95,11 +93,11 @@ const ExpenseCategoryEditDialog = () => {
 
   useEffect(() => {
     if (!defaultValues.categoryName) {
-      return;
+      return
     }
 
-    reset(defaultValues);
-  }, [defaultValues, reset]);
+    reset(defaultValues)
+  }, [defaultValues, reset])
 
   if (_.isEmpty(editExpenseCategoryState)) {
     return

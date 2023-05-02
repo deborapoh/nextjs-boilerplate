@@ -8,6 +8,10 @@ export const dialogs = {
   expenseCategory: 'Expense Category',
   expenseCategoryEdit: 'Expense Category Edit',
   history: 'History',
+  generateInvoice: 'Generate Invoice',
+  invoiceEdit: 'Invoice Edit',
+  expenseEdit: 'Expense Edit',
+  generateExpense: 'Generate Expense',
 }
 
 export const dialogState = atom({

@@ -1,6 +1,5 @@
 import {
   Box,
-  Collapse,
   IconButton,
   List as ListMui,
   ListItemButton as ListItemButtonMui,
@@ -16,23 +15,23 @@ import classNames from "classnames"
 // TODO: Add tooltips to icons
 // TODO: Clear forms after submitting
 
-const List = styled(ListMui)(({ theme }) => ({
+const List = styled(ListMui)(() => ({
   overflowY: 'scroll',
   height: 265,
 }))
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(() => ({
   width: '50%',
 }))
 
 const ListItemButton = styled(ListItemButtonMui)(({ theme }) => ({
   width: '90%',
-  backgroundColor: '#dabeff',
+  backgroundColor: theme.palette.common.main,
   marginBottom: 5,
   borderRadius: 5,
 
   '&.archived': {
-    backgroundColor: '#0000000a',
+    backgroundColor: theme.palette.grey.main,
   }
 }))
 
@@ -60,12 +59,8 @@ const ExpenseCategoryList = () => {
   const handleArchiveButton = (e, categoryName) => {
     e.stopPropagation()
 
-    console.log('categoryName', categoryName)
-
     const category = registeredExpenseCategories.find((cat) =>
       cat.categoryName === categoryName)
-
-    console.log('category', category)
 
     const registeredCategoryIndex = registeredExpenseCategories.findIndex(category => {
       return category.categoryName === categoryName
@@ -78,8 +73,6 @@ const ExpenseCategoryList = () => {
         ...category,
         archived: !category.archived,
       }
-
-      console.log('newArray', newArray)
 
       setExpenseCategoryState(newArray)
     }

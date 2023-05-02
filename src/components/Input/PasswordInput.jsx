@@ -1,4 +1,4 @@
-import InputValidation from '@/components/Warning/InputValidation';
+import InputValidation from '@/components/Warning/InputValidation'
 import Input from '@/components/Input'
 
 const PasswordInput = ({ errors, register }) => (
@@ -11,6 +11,6 @@ const PasswordInput = ({ errors, register }) => (
     />
     <InputValidation message={errors.password?.type === 'required' && "Senha é obrigatório"} />
   </>
-);
+)
 
-export default PasswordInput;
+export default PasswordInput

@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material';
+import { TextField } from '@mui/material'
 
 const Input = ({ register, ...props }) => {
   return (
@@ -11,4 +11,4 @@ const Input = ({ register, ...props }) => {
   )
 }
 
-export default Input;
+export default Input

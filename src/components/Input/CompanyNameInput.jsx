@@ -1,4 +1,4 @@
-import InputValidation from '@/components/Warning/InputValidation';
+import InputValidation from '@/components/Warning/InputValidation'
 import Input from '@/components/Input'
 
 const CompanyNameInput = ({ errors, register }) => (
@@ -13,4 +13,4 @@ const CompanyNameInput = ({ errors, register }) => (
   </>
 )
 
-export default CompanyNameInput;
+export default CompanyNameInput

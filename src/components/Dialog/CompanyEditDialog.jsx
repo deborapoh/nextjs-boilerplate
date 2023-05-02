@@ -10,24 +10,24 @@ import { useSetCompanyState, useCompanyState } from "@/state/companies"
 import { ArrowBack } from '@mui/icons-material'
 import _ from 'lodash'
 
-const Dialog = styled(DialogMui)(({ theme }) => ({
+const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',
 }))
 
-const DialogContent = styled(DialogContentMui)(({ theme }) => ({
+const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
   justifyContent: 'space-between',
   width: 500,
 }))
 
-const Form = styled('form')(({ theme }) => ({
+const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
 }))
 
 // TODO: isolate this css
-const BackButton = styled(IconButton)(({ theme }) => ({
+const BackButton = styled(IconButton)(() => ({
   position: 'absolute',
   right: 8,
   top: 8,
@@ -48,7 +48,7 @@ const CompanyEditDialog = () => {
       tradingName: editCompanyState?.tradingName || '',
     }),
     [editCompanyState],
-  );
+  )
 
   const {
     formState: { errors },
@@ -87,7 +87,7 @@ const CompanyEditDialog = () => {
     const { cnpj, companyName, tradingName } = data
 
     const registeredCompanyIndex = registeredCompanies.findIndex(comp => {
-      return comp.id === editCompanyState.id;
+      return comp.id === editCompanyState.id
     })
 
     if (registeredCompanyIndex !== -1) {
@@ -119,11 +119,11 @@ const CompanyEditDialog = () => {
 
   useEffect(() => {
     if (!defaultValues.cnpj) {
-      return;
+      return
     }
 
-    reset(defaultValues);
-  }, [defaultValues, reset]);
+    reset(defaultValues)
+  }, [defaultValues, reset])
 
   if (_.isEmpty(editCompanyState)) {
     return

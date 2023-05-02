@@ -1,7 +1,7 @@
-const { Typography, styled } = require("@mui/material");
+const { Typography, styled } = require("@mui/material")
 
 const Text = styled(Typography)(({ theme }) => ({
-  color: "#4f2783",
+  color: theme.palette.primary.main,
 }))
 
 const ListTitle = ({ children }) => <Text>{children}</Text>

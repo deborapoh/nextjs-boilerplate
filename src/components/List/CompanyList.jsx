@@ -13,18 +13,18 @@ import ListTitle from "../Title"
 import { useState } from "react"
 import { dialogs, useSetDialogState, useSetEditCompanyState } from "@/state/dialog"
 
-const List = styled(ListMui)(({ theme }) => ({
+const List = styled(ListMui)(() => ({
   overflowY: 'scroll',
   maxHeight: 265,
 }))
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(() => ({
   width: '50%',
 }))
 
 const ListItemButton = styled(ListItemButtonMui)(({ theme }) => ({
   width: '90%',
-  backgroundColor: '#dabeff',
+  backgroundColor: theme.palette.common.main,
   marginBottom: 5,
   borderRadius: 5,
 }))
@@ -45,7 +45,6 @@ const CompanyList = () => {
   }
 
   const handleEditButton = (e, company) => {
-    console.log('company', company)
     e.stopPropagation()
 
     const companyId = registeredCompanies.find((comp) => comp.cnpj === company.cnpj)

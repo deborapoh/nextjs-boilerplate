@@ -1,12 +1,12 @@
-import { Checkbox, FormControlLabel } from '@mui/material';
-import { useState } from 'react';
+import { Checkbox, FormControlLabel } from '@mui/material'
+import { useState } from 'react'
 
 const ControlledCheckbox = ({ label = 'Label' }) => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(true)
 
   const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+    setChecked(event.target.checked)
+  }
 
   return (
     <FormControlLabel
@@ -19,7 +19,7 @@ const ControlledCheckbox = ({ label = 'Label' }) => {
       }
       label={label}
     />
-  );
+  )
 }
 
 export default ControlledCheckbox

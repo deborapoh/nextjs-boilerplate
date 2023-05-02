@@ -1,19 +1,19 @@
-import { Box, Typography, styled } from '@mui/material';
+import { Box, Typography, styled } from '@mui/material'
 
 // TODO: improve this component
 
 const Text = styled(Typography)(({ theme }) => ({
-  color: '#4f2783',
+  color: theme.palette.primary.main,
   fontSize: 12,
   marginBottom: 12,
-}));
+}))
 
-const EmptyMessage = styled(Box)(({ theme }) => ({
+const EmptyMessage = styled(Box)(() => ({
   height: 30,
-}));
+}))
 
 const InputValidation = ({ message }) => (
   message ? <Text role="alert">{message}</Text> : <EmptyMessage />
-);
+)
 
-export default InputValidation;
+export default InputValidation

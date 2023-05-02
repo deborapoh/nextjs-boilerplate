@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import { Box, styled } from "@mui/material"
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 import UserInput from "@/components/Input/UserInput"
 import PasswordInput from "@/components/Input/PasswordInput"
-import SubmitButton from "@/components/Button/SubmitButton";
-import InputValidation from "@/components/Warning/InputValidation";
-import mockData from "@/mock-data";
-import Logo from '@/components/Icon/Logo';
+import SubmitButton from "@/components/Button/SubmitButton"
+import InputValidation from "@/components/Warning/InputValidation"
+import Logo from '@/components/Icon/Logo'
+import { useUserState } from '@/state/user'
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(() => ({
   alignItems: 'center',
   backgroundColor: 'white',
   borderRadius: 8,
@@ -21,27 +21,29 @@ const Container = styled(Box)(({ theme }) => ({
   marginTop: 100,
   padding: 32,
   width: 350,
-}));
+}))
 
-const Form = styled('form')(({ theme }) => ({
+const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-evenly',
   marginBlock: '64px 16px',
   width: 300,
-}));
+}))
 
 const Login = () => {
+  const registeredUser = useUserState()
+
   const { formState: { errors }, handleSubmit, register, setError, clearErrors } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange'
-  });
+  })
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
 
     const { user, password} = data
-    const { user: { adminUser, adminPassword } } = mockData
+    const { adminUser, adminPassword } = registeredUser
 
     // TODO: implement login in the api with jwt validation
     if (user !== adminUser || password !== adminPassword) {
@@ -50,14 +52,11 @@ const Login = () => {
     }
 
     window.open('/main-page', '_self')
-  };
+  }
 
-  // TODO: better routing
   // TODO: send error messages to the component
   // TODO: props validation
-  // TODO: use theme for colors and spacing
   // TODO: isolate styles
-  // TODO: redirect index to login page
   return (
     <>
       <Head>

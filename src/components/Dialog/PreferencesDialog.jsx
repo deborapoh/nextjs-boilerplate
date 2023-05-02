@@ -1,22 +1,22 @@
-import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog";
+import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { Dialog, DialogContent, DialogTitle, IconButton, styled } from "@mui/material"
 import { Close as CloseIcon } from '@mui/icons-material'
 import ActionButton from "../Button/ActionButton"
 
-const ContentContainer = styled(DialogContent)(({ theme }) => ({
+const ContentContainer = styled(DialogContent)(() => ({
   display: 'flex',
   flexDirection: 'column',
   height: 300,
   width: 500,
   justifyContent: 'space-around',
-}));
+}))
 
-const CloseButton = styled(IconButton)(({ theme }) => ({
+const CloseButton = styled(IconButton)(() => ({
   position: 'absolute',
   right: 8,
   top: 8,
   color: (theme) => theme.palette.grey[500],
-}));
+}))
 
 const PreferencesDialog = () => {
   const open = useIsDialogOpen(dialogs.preferences)

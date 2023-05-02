@@ -11,23 +11,23 @@ import { ArrowBack, Delete, Edit } from '@mui/icons-material'
 import { v4 } from 'uuid'
 import CompanyList from "../List/CompanyList"
 
-const Dialog = styled(DialogMui)(({ theme }) => ({
+const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',
 }))
 
-const DialogContent = styled(DialogContentMui)(({ theme }) => ({
+const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
   justifyContent: 'space-between',
 }))
 
-const Form = styled('form')(({ theme }) => ({
+const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '50%',
 }))
 
 // TODO: isolate this css
-const BackButton = styled(IconButton)(({ theme }) => ({
+const BackButton = styled(IconButton)(() => ({
   position: 'absolute',
   right: 8,
   top: 8,
@@ -103,11 +103,11 @@ const CompanyDialog = () => {
 
   useEffect(() => {
     if (!isSubmitSuccessful) {
-      return;
+      return
     }
 
-    reset(defaultValues);
-  }, [isSubmitSuccessful]);
+    reset(defaultValues)
+  }, [isSubmitSuccessful])
 
   return (
     <Dialog

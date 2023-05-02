@@ -1,12 +1,6 @@
 import '@/styles/globals.css'
 
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil'
+import { RecoilRoot } from 'recoil'
 
 import PropTypes from 'prop-types'
 import Head from 'next/head'

@@ -10,9 +10,9 @@ import {
 import { useState } from 'react'
 import PreferencesDialog from './Dialog/PreferencesDialog'
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(() => ({
   width: 200,
-}));
+}))
 
 const MenuOptions = ({ handleOpenPreferences }) => {
   const handleClickHistory = () => {
@@ -36,7 +36,7 @@ const MenuOptions = ({ handleOpenPreferences }) => {
         </List>
       </Container>
     </>
-  );
+  )
 }
 
 export default MenuOptions

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import ActionButton from '@/components/Button/ActionButton'
 import MenuIcon from "@/components/Icon/MenuIcon"
 import Dashboard from "@/components/Dashboard"
-import SignOutButton from "@/components/Button/SignOutButton";
+import SignOutButton from "@/components/Button/SignOutButton"
 import Popover from "@/components/Popover"
 import Dialog from "@/components/Dialog"
 import { dialogs, useSetDialogState } from "@/state/dialog"
@@ -15,38 +15,37 @@ export let registeredExpenseCategories = []
 
 const HeaderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
-  backgroundColor: '#dabeff',
+  backgroundColor: theme.palette.common.main,
   display: 'flex',
   padding: 10,
   justifyContent: 'space-between',
   width: '100%',
-}));
+}))
 
-const FooterContainer = styled(Box)(({ theme }) => ({
+const FooterContainer = styled(Box)(() => ({
   alignItems: 'center',
   display: 'flex',
   padding: 10,
   justifyContent: 'flex-end',
   width: '100%',
-}));
+}))
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(() => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
   width: '100%',
   justifyContent: 'space-between',
-}));
+}))
 
 // TODO: sort alphabetically and adjust eslint
 // TODO: isolate css
-// TODO: fix the slow page issue
 
 const MainPage = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null)
   const setDialogState = useSetDialogState()
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl)
 
   const handleSignOut = () => {
     window.open('/login', '_self')
@@ -54,18 +53,18 @@ const MainPage = () => {
 
   const handleMenuClose = () => {
     setAnchorEl(null)
-  };
+  }
 
   const handleOpenPreferences = () => {
     handleMenuClose()
     setDialogState(dialogs.preferences)
-
-    // setOpenPreferences(true)
   }
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
-  };
+  }
+
+  // TODO: fix the change icon color from menu
 
   return (
     <>
@@ -76,7 +75,7 @@ const MainPage = () => {
       <Container>
         <HeaderContainer>
           <Box alignItems='center' display='flex' width={300} justifyContent='space-between'>
-            <MenuIcon onClick={handleMenuOpen} />
+            <MenuIcon sx={{ color: '#h1h1h1' }} onClick={handleMenuOpen} />
             <Popover
               handleOpenPreferences={handleOpenPreferences}
               handleMenuClose={handleMenuClose}
@@ -90,7 +89,7 @@ const MainPage = () => {
         </HeaderContainer>
         <Dashboard />
         <FooterContainer>
-          <ActionButton text="Lançar NF" />
+          <ActionButton onClick={() => setDialogState(dialogs.generateInvoice)} text="Lançar NF" />
           <Box ml={1}>
             <ActionButton text="Lançar Despesa" />
           </Box>
