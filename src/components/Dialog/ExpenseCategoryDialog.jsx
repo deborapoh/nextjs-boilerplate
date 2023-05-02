@@ -1,4 +1,4 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
+import { Dialog, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
 import { useEffect } from "react"
 import { v4 } from 'uuid'
@@ -9,10 +9,6 @@ import ExpenseCategoryList from "../List/ExpenseCategoryList"
 import CategoryNameInput from "../Input/CategoryNameInput"
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 import BackButton from "../Button/BackButton"
-
-const Dialog = styled(DialogMui)(() => ({
-  // display: 'flex',
-}))
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',

@@ -1,4 +1,4 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
+import { Dialog, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
 import { useEffect } from "react"
 
@@ -12,10 +12,6 @@ import ServiceDescriptionInput from "../Input/ServiceDescriptionInput"
 import InvoiceMonthInput from "../Input/InvoiceMonthInput"
 import InvoiceDateInput from "../Input/InvoiceDateInput"
 import CloseButton from "../Button/CloseButton"
-
-const Dialog = styled(DialogMui)(() => ({
-  // display: 'flex',
-}))
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',

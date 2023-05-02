@@ -1,4 +1,4 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
+import { Dialog, DialogContent as DialogContentMui, DialogTitle, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
 import { useEffect, useMemo } from "react"
 import _ from 'lodash'
@@ -8,10 +8,6 @@ import { dialogs, useEditExpenseCategoryState, useIsDialogOpen, useSetDialogStat
 import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 import CategoryNameInput from "../Input/CategoryNameInput"
 import BackButton from "../Button/BackButton"
-
-const Dialog = styled(DialogMui)(() => ({
-  // display: 'flex',
-}))
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',

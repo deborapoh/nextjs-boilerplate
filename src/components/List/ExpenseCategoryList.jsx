@@ -13,8 +13,8 @@ import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/exp
 import ListTitle from "../Title"
 import { dialogs, useSetDialogState, useSetEditExpenseCategoryState } from "@/state/dialog"
 
-// TODO: Add tooltips to icons
-// TODO: Clear forms after submitting
+// TODO: Add tooltips to all icons
+// TODO: Clear all forms after submitting
 
 const List = styled(ListMui)(() => ({
   overflowY: 'scroll',

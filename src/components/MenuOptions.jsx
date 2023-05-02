@@ -14,8 +14,7 @@ const Container = styled(Box)(() => ({
 }))
 
 const MenuOptions = ({ handleOpenPreferences }) => {
-  const handleClickHistory = () => {
-  }
+  const handleClickHistory = () => {}
 
   return (
     <>
