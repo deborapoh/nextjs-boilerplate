@@ -11,6 +11,7 @@ import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useSetCompanyState, useCompanyState } from "@/state/companies"
 import CompanyList from "../List/CompanyList"
 import BackButton from "../Button/BackButton"
+import { normalizeCnpjNumber } from "@/utils/cnpj"
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
@@ -49,17 +50,6 @@ const CompanyDialog = () => {
   })
 
   const cnpjValue = watch("cnpj")
-
-  const normalizeCnpjNumber = (value) => {
-    if (!value) return ''
-
-    return value.replace(/[\D]/g, '')
-      .replace(/(\d{2})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1/$2')
-      .replace(/(\d{4})(\d)/, '$1-$2')
-      .replace(/(-\d{2})\d+?$/, '$1')
-  }
 
   useEffect(() => {
     setValue("cnpj", normalizeCnpjNumber(cnpjValue))

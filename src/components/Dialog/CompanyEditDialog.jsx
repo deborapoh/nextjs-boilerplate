@@ -10,6 +10,7 @@ import TradingNameInput from "../Input/TradingNameInput"
 import { dialogs, useEditCompanyState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useSetCompanyState, useCompanyState } from "@/state/companies"
 import BackButton from "../Button/BackButton"
+import { normalizeCnpjNumber } from "@/utils/cnpj"
 
 const DialogContent = styled(DialogContentMui)(() => ({
   display: 'flex',
@@ -53,18 +54,6 @@ const CompanyEditDialog = () => {
   })
 
   const cnpjValue = watch("cnpj")
-
-  // TODO: isolate this code
-  const normalizeCnpjNumber = (value) => {
-    if (!value) return ''
-
-    return value.replace(/[\D]/g, '')
-      .replace(/(\d{2})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1/$2')
-      .replace(/(\d{4})(\d)/, '$1-$2')
-      .replace(/(-\d{2})\d+?$/, '$1')
-  }
 
   useEffect(() => {
     setValue("cnpj", normalizeCnpjNumber(cnpjValue))
