@@ -11,9 +11,6 @@ import Dialog from "@/components/Dialog"
 import { dialogs, useSetDialogState } from "@/state/dialog"
 import Logo from "@/components/Icon/Logo"
 
-export let registeredCompanies = []
-export let registeredExpenseCategories = []
-
 const HeaderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   backgroundColor: theme.palette.common.main,
@@ -39,8 +36,6 @@ const Container = styled(Box)(() => ({
   width: '100%',
   justifyContent: 'space-between',
 }))
-
-// TODO: isolate css
 
 const MainPage = () => {
   const [anchorEl, setAnchorEl] = useState(null)
