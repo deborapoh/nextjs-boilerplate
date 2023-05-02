@@ -1,7 +1,6 @@
 import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
 import { useForm } from 'react-hook-form'
 import { useEffect } from "react"
-import { Close as CloseIcon } from '@mui/icons-material'
 
 import SubmitButton from "../Button/SubmitButton"
 import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
@@ -12,6 +11,7 @@ import InvoiceAmountInput from "../Input/InvoiceAmountInput"
 import ServiceDescriptionInput from "../Input/ServiceDescriptionInput"
 import InvoiceMonthInput from "../Input/InvoiceMonthInput"
 import InvoiceDateInput from "../Input/InvoiceDateInput"
+import CloseButton from "../Button/CloseButton"
 
 const Dialog = styled(DialogMui)(() => ({
   // display: 'flex',
@@ -26,14 +26,6 @@ const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: '50%',
-}))
-
-// TODO: isolate this css
-const CloseButton = styled(IconButton)(() => ({
-  position: 'absolute',
-  right: 8,
-  top: 8,
-  color: (theme) => theme.palette.grey[500],
 }))
 
 const GenerateInvoiceDialog = () => {
@@ -104,9 +96,7 @@ const GenerateInvoiceDialog = () => {
         <CloseButton
           aria-label="close"
           onClick={() => setDialogState('')}
-        >
-          <CloseIcon />
-        </CloseButton>
+        />
       </DialogTitle>
       <DialogContent dividers>
         <InvoiceList />
