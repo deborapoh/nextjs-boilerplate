@@ -21,6 +21,16 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ## TODO: Implement login in the api with jwt validation
 
+---
+
+## TODO: Create api and database
+
+---
+
+## TODO: Create env file
+
+---
+
 ## TODO: Finish Lançar NF implementation
 
 ---
