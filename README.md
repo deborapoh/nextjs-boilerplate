@@ -9,7 +9,68 @@ yarn
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
+
+## How to Login
+
+TODO: Implement login in the api with jwt validation
+
+Open [http://localhost:3000](http://localhost:3000) with your browser and use the infor below to login
+
+```bash
+usuario: admin
+senha: 123
+```
+
+---
+
+## Instructions on how to use the software
+
+### Menu
+
+- Preferências
+  - Empresas Parceiras
+      1. Ao abrir esta opção é possível cadastrar uma empresa para quem se oferece serviço
+      2. Na lista de empresas cadastradas é possível clicar no ícone de editar para editar qualquer campo da empresa
+      3. Na lista de empresas cadastradas é possível clicar no ícone de expandir para visualizar os dados da empresa
+
+  - Categorias de Despesa
+      1. Ao abrir esta opção é possível cadastrar uma categoria de despesa
+      2. Na lista de categorias cadastradas é possível clicar no ícone de editar para editar a categoria
+      3. Na lista de categorias cadastradas é possível clicar no ícone de arquivar para desabilitar uma categoria, clicando novamente esta é habilitada novamente
+
+  - Configurações:
+    - TODO: implementar
+
+### Dashboard
+
+A tela principal contém os dashboards para rápida visualização
+
+- Gráfico indicativo de quanto ainda há disponível de faturamento para emitir uma Nota Fiscal sem que haja desenquadramento como MEI
+- Gráficos com o valor de NF gerado, mês a mês
+- Gráficos com o valor de despesas mês a mês
+- Gráficos com balanço simples, mostrando receitas - despesas mês a mês
+- Gráficos com as despesas por categorias
+
+- TODO: implementar
+
+### Sair
+
+- Ao clicar em Sair o usuário é direcionado para a tela de login novamente
+
+### Lançar NF
+
+- Ao clicar em Lançar NF será possível selecionar uma empresa e cadastrar os dados de uma Nota Fiscal para determinada empresa
+
+TODO: Finish Lançar NF implementation
+
+### Lançar Despesa
+
+- Ao clicar em Lançar Despesa será possível selecionar uma categoria e cadastrar os dados de uma Despesa
+
+- TODO: implementar
+
+---
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
@@ -19,27 +80,11 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ---
 
-## TODO: Implement login in the api with jwt validation
-
----
-
 ## TODO: Create api and database
 
 ---
 
 ## TODO: Create env file
-
----
-
-## TODO: Finish Lançar NF implementation
-
----
-
-## TODO: Implementar Lançar Despesa
-
----
-
-## TODO: Implementar Dashboard with the Carts
 
 ---
 
