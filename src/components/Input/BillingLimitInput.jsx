@@ -11,12 +11,12 @@ const Container = styled(Box)(({ theme }) => ({
 const BillingLimitInput = ({ errors, register }) => (
   <Container>
     <Input
-      placeholder='Limite máximo de Faturamento de MEI em R$'
+      label='Limite máximo de Faturamento de MEI em R$'
       type='number'
-      name="Limite de Faturamento"
+      name="billingLimit"
       register={register}
     />
-    <InputValidation message={errors.limitedefaturamento?.type === 'required' && "Limite de faturamento inválido"} />
+    <InputValidation message={errors.billingLimit?.type === 'required' && "Limite de faturamento inválido"} />
   </Container>
 )
 

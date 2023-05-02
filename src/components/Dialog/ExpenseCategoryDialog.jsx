@@ -1,50 +1,95 @@
-import { Dialog, DialogContent, DialogTitle, IconButton, styled } from "@mui/material"
+import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
 import SubmitButton from "../Button/SubmitButton"
-import { useForm } from 'react-hook-form';
-import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog";
-import CategoryNameInput from "../Input/CategoryNameInput";
+import { useForm } from 'react-hook-form'
+import { useEffect } from "react"
+import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { ArrowBack } from '@mui/icons-material'
+import { v4 } from 'uuid'
+import ExpenseCategoryList from "../List/ExpenseCategoryList"
+import CategoryNameInput from "../Input/CategoryNameInput"
+import { useExpenseCategoryState, useSetExpenseCategoryState } from "@/state/expenseCategory"
 
-const ContentContainer = styled(DialogContent)(({ theme }) => ({
+const Dialog = styled(DialogMui)(({ theme }) => ({
+  // display: 'flex',
+}))
+
+const DialogContent = styled(DialogContentMui)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+}))
+
+const Form = styled('form')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  height: 400,
-  width: 500,
-}));
+  width: '50%',
+}))
 
+// TODO: isolate this css
 const BackButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
   right: 8,
   top: 8,
   color: (theme) => theme.palette.grey[500],
-}));
-
-const Form = styled('form')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  height: '100%',
-  width: '100%',
-}));
+}))
 
 const ExpenseCategoryDialog = () => {
-  const open = useIsDialogOpen(dialogs.expenseCategory);
+  const open = useIsDialogOpen(dialogs.expenseCategory)
   const setDialogState = useSetDialogState()
+  const registeredExpenseCategories = useExpenseCategoryState()
+  const setExpenseCategoryState = useSetExpenseCategoryState()
 
-  const { formState: { errors }, handleSubmit, register, clearErrors, watch, setValue } = useForm({
-    mode: 'onBlur',
-    reValidateMode: 'onChange'
-  });
+  const defaultValues = {
+    categoryName: '',
+  }
+
+  const {
+    formState: { errors },
+    handleSubmit,
+    register,
+    clearErrors,
+    isSubmitSuccessful,
+  } = useForm({
+    mode: 'onChange',
+    defaultValues
+  })
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
-    console.log('data', data)
-  };
+
+    const { categoryName } = data
+
+    const newCategory = {
+      id: v4(),
+      archived: false,
+      categoryName,
+    }
+
+    const duplicatedCategory = registeredExpenseCategories.find(
+      (category) => category.categoryName === newCategory.categoryName
+    )
+
+    if (duplicatedCategory) {
+      alert('Duplicated category')
+      return
+    }
+
+    setExpenseCategoryState([...registeredExpenseCategories, newCategory])
+  }
+
+  useEffect(() => {
+    if (!isSubmitSuccessful) {
+      return;
+    }
+
+    reset(defaultValues);
+  }, [isSubmitSuccessful]);
 
   return (
     <Dialog
       open={open}
       onClose={() => setDialogState('')}
+      fullWidth
+      maxWidth="lg"
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
         Categorias de Despesas
@@ -55,12 +100,13 @@ const ExpenseCategoryDialog = () => {
           <ArrowBack />
         </BackButton>
       </DialogTitle>
-      <ContentContainer dividers>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <CategoryNameInput errors={errors} register={register} />
-        <SubmitButton name="Cadastrar" onClick={() => clearErrors("")} />
-      </Form>
-      </ContentContainer>
+      <DialogContent dividers>
+        <ExpenseCategoryList />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <CategoryNameInput errors={errors} register={register} />
+          <SubmitButton name="Cadastrar" onClick={() => clearErrors("")} />
+        </Form>
+      </DialogContent>
     </Dialog>
   )
 }

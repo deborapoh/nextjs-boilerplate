@@ -1,15 +1,14 @@
-import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled, Typography } from "@mui/material"
+import { Dialog as DialogMui, DialogContent as DialogContentMui, DialogTitle, IconButton, styled } from "@mui/material"
 import SubmitButton from "../Button/SubmitButton"
 import { useForm } from 'react-hook-form'
 import CnpjInput from "../Input/CnpjInput"
 import CompanyNameInput from "../Input/CompanyNameInput"
 import TradingNameInput from "../Input/TradingNameInput"
-import { useEffect } from "react"
-import { dialogs, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
+import { useEffect, useMemo } from "react"
+import { dialogs, useEditCompanyState, useIsDialogOpen, useSetDialogState } from "@/state/dialog"
 import { useSetCompanyState, useCompanyState } from "@/state/companies"
-import { ArrowBack, Delete, Edit } from '@mui/icons-material'
-import { v4 } from 'uuid'
-import CompanyList from "../List/CompanyList"
+import { ArrowBack } from '@mui/icons-material'
+import _ from 'lodash'
 
 const Dialog = styled(DialogMui)(({ theme }) => ({
   // display: 'flex',
@@ -18,12 +17,13 @@ const Dialog = styled(DialogMui)(({ theme }) => ({
 const DialogContent = styled(DialogContentMui)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
+  width: 500,
 }))
 
 const Form = styled('form')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  width: '50%',
+  width: '100%',
 }))
 
 // TODO: isolate this css
@@ -34,17 +34,21 @@ const BackButton = styled(IconButton)(({ theme }) => ({
   color: (theme) => theme.palette.grey[500],
 }))
 
-const CompanyDialog = () => {
-  const open = useIsDialogOpen(dialogs.company)
+const CompanyEditDialog = () => {
+  const open = useIsDialogOpen(dialogs.companyEdit)
   const setDialogState = useSetDialogState()
   const setCompanyState = useSetCompanyState()
+  const editCompanyState = useEditCompanyState()
   const registeredCompanies = useCompanyState()
 
-  const defaultValues = {
-    cnpj: '',
-    companyName: '',
-    tradingName: '',
-  }
+  const defaultValues = useMemo(
+    () => ({
+      cnpj: editCompanyState?.cnpj || '',
+      companyName: editCompanyState?.companyName || '',
+      tradingName: editCompanyState?.tradingName || '',
+    }),
+    [editCompanyState],
+  );
 
   const {
     formState: { errors },
@@ -53,14 +57,15 @@ const CompanyDialog = () => {
     clearErrors,
     watch,
     setValue,
-    isSubmitSuccessful,
+    reset,
   } = useForm({
+    defaultValues,
     mode: 'onChange',
-    defaultValues
   })
 
   const cnpjValue = watch("cnpj")
 
+  // TODO: isolate this code
   const normalizeCnpjNumber = (value) => {
     if (!value) return ''
 
@@ -81,61 +86,73 @@ const CompanyDialog = () => {
 
     const { cnpj, companyName, tradingName } = data
 
-    const newCompany = {
-      id: v4(),
-      cnpj,
-      companyName,
-      tradingName
+    const registeredCompanyIndex = registeredCompanies.findIndex(comp => {
+      return comp.id === editCompanyState.id;
+    })
+
+    if (registeredCompanyIndex !== -1) {
+      const duplicatedCompany = registeredCompanies.find((comp) => {
+        return comp.cnpj !== editCompanyState?.cnpj && comp.cnpj === cnpj
+      })
+
+      if (duplicatedCompany) {
+        alert('Duplicated company') // TODO: add error message
+        return
+      }
+
+      const newArray = [...registeredCompanies]
+
+      newArray[registeredCompanyIndex] = {
+        id: registeredCompanies[registeredCompanyIndex].id,
+        cnpj,
+        companyName,
+        tradingName,
+      }
+
+      setCompanyState(newArray)
+      setDialogState(dialogs.company)
     }
-
-    const duplicatedCompany = registeredCompanies.find((comp) => comp.cnpj === newCompany.cnpj)
-
-    if (duplicatedCompany) {
-      alert('Duplicated company')
-      return
-    }
-
-    setCompanyState([...registeredCompanies, newCompany])
   }
 
   // TODO: add a close icon button to all dialogs
   // TODO: add proptypes to all props
 
   useEffect(() => {
-    if (!isSubmitSuccessful) {
+    if (!defaultValues.cnpj) {
       return;
     }
 
     reset(defaultValues);
-  }, [isSubmitSuccessful]);
+  }, [defaultValues, reset]);
+
+  if (_.isEmpty(editCompanyState)) {
+    return
+  }
 
   return (
     <Dialog
       open={open}
       onClose={() => setDialogState('')}
-      fullWidth
-      maxWidth="lg"
     >
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        Empresas Parceiras
+        Editar Empresa
         <BackButton
           aria-label="back"
-          onClick={() => setDialogState(dialogs.preferences)}
+          onClick={() => setDialogState(dialogs.company)}
         >
           <ArrowBack />
         </BackButton>
       </DialogTitle>
       <DialogContent dividers>
-        <CompanyList />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <CnpjInput errors={errors} register={register} />
           <CompanyNameInput errors={errors} register={register} />
           <TradingNameInput errors={errors} register={register} />
-          <SubmitButton name="Cadastrar" onClick={() => clearErrors("")} />
+          <SubmitButton name="Salvar" onClick={() => clearErrors("")} />
         </Form>
       </DialogContent>
     </Dialog>
   )
 }
 
-export default CompanyDialog
+export default CompanyEditDialog

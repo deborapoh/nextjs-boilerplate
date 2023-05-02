@@ -16,7 +16,6 @@ const Container = styled(Box)(({ theme }) => ({
 
 const MenuOptions = ({ handleOpenPreferences }) => {
   const handleClickHistory = () => {
-    console.log('handleClickHistory')
   }
 
   return (

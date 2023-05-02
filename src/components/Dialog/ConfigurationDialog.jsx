@@ -39,7 +39,6 @@ const ConfigurationDialog = () => {
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
-    console.log('data', data)
   };
 
   return (

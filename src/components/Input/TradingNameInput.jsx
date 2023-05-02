@@ -3,8 +3,13 @@ import Input from '@/components/Input'
 
 const TradingNameInput = ({ errors, register }) => (
   <>
-    <Input name="Nome Fantasia" register={register} />
-    <InputValidation message={errors.nomefantasia?.type === 'required' && "Nome Fantasia é obrigatório"} />
+    <Input
+      name='tradingName'
+      type='text'
+      label='Nome Fantasia'
+      register={register}
+    />
+    <InputValidation message={errors.tradingName?.type === 'required' && "Nome Fantasia é obrigatório"} />
   </>
 )
 

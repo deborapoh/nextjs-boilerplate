@@ -10,6 +10,9 @@ import Dialog from "@/components/Dialog"
 import { dialogs, useSetDialogState } from "@/state/dialog"
 import Logo from "@/components/Icon/Logo"
 
+export let registeredCompanies = []
+export let registeredExpenseCategories = []
+
 const HeaderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   backgroundColor: '#dabeff',
@@ -38,6 +41,7 @@ const Container = styled(Box)(({ theme }) => ({
 
 // TODO: sort alphabetically and adjust eslint
 // TODO: isolate css
+// TODO: fix the slow page issue
 
 const MainPage = () => {
   const [anchorEl, setAnchorEl] = useState(null);

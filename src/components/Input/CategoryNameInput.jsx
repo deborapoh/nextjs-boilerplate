@@ -10,8 +10,13 @@ const Container = styled(Box)(({ theme }) => ({
 
 const CategoryNameInput = ({ errors, register }) => (
   <Container>
-    <Input name="Nome" register={register} />
-    <InputValidation message={errors.nome?.type === 'required' && "Nome da categoria é obrigatório"} />
+    <Input
+      name='categoryName'
+      label='Nome'
+      type='text'
+      register={register}
+    />
+    <InputValidation message={errors.categoryName?.type === 'required' && "Nome da categoria é obrigatório"} />
   </Container>
 )
 
